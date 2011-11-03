@@ -46,6 +46,7 @@ namespace PointingMagnifier
             //Add Keyboard Hook
             kHook = new LowLevelKeyboardHook("kHook");
             kHook.OnKeyDown += new EventHandler<KeyEventArgs>(kHook_OnKeyDown);
+            kHook.OnKeyUp += new EventHandler<KeyEventArgs>(kHook_OnKeyUp);
 
             //Add the Magnifier
             _magnifier = new Magnifier(ref preferences,ref _logger, ref _cursorWrapper);
@@ -73,6 +74,8 @@ namespace PointingMagnifier
            
             UpdateValues();
         }
+
+        
 
         private void _feedbackReminder_Tick(object sender, EventArgs e)
         {
@@ -532,8 +535,22 @@ namespace PointingMagnifier
                 if (keyShortcut3.Shortcut == e.KeyData)
                 {
                     e.SuppressKeyPress = true;
-                    Feedback_event(this, null);
+                    if (preferences.Logging)
+                        Feedback_event(this, null);
+                    else
+                        _magnifier.ActiveNSC = false;
+                        
                 }
+            }
+        }
+
+        private void kHook_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (keyShortcut3.Shortcut == e.KeyData)
+            {
+                e.SuppressKeyPress = true;
+                if (!preferences.Logging)
+                    _magnifier.ActiveNSC = true;
             }
         }
         #endregion

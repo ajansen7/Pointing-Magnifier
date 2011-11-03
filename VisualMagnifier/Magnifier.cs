@@ -399,6 +399,17 @@ namespace PointingMagnifier
             }
         }
 
+        public bool ActiveNSC
+        {
+            set
+            {
+                this.Visible = value;
+                _active = value;
+                _logger.ChangeState(_active);
+                _cursor.Visible = !_active; //When magnifier is active, cursor should not be visible
+            }
+        }
+
         /// <summary>
         /// Gets whether the Pointing Magnifier is currently magnified.
         /// </summary>
