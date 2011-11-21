@@ -1,9 +1,0 @@
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\bin\Debug\LogParser.exe
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\bin\Debug\LogParser.pdb
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\obj\x86\Debug\ResolveAssemblyReference.cache
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\obj\x86\Debug\LogParser.MainForm.resources
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\obj\x86\Debug\LogParser.Properties.Resources.resources
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\obj\x86\Debug\ResGen.read.1.tlog
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\obj\x86\Debug\ResGen.write.1.tlog
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\obj\x86\Debug\LogParser.exe
-F:\Dropbox\Projects\Pointing Magnifier\PointingMagnifier_logging_v1.5.0\LogParser\obj\x86\Debug\LogParser.pdb

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<PointingMagnifier T="10:14:21:045" eT="00:00:00">
+  <State Active="Initialized" Study="true" Logging="true" Baseline="true">
+    <Preferences Radius="75" eT="00:00:00" />
+    <Preferences MagnificationFactor="4" eT="00:00:00" />
+    <Preferences Transparency="0.5" eT="00:00:00" />
+    <Preferences LowerMouseGain="False" eT="00:00:00" />
+    <Preferences Crosshairs="False" eT="00:00:00" />
+  </State>
+  <State Study="true" Logging="true" Baseline="false" Active="true" T="10:14:22:228" eT="00:00:00">
+    <Event>
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="413" Y="494" Synth="false" Mag="false" T="10:14:22:255" eT="00:00:00" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="413" Y="494" Synth="false" Mag="false" T="10:14:22:261" eT="00:00:00" />
+      <Magnify X="113" Y="194" Diameter="600" TransposeX="0" TransposeY="0" T="10:14:22:307" eT="00:00:00" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="413" Y="494" Synth="false" Mag="true" T="10:14:22:778" eT="00:00:00" />
+      <Clickthrough T="10:14:22:785" eT="00:00:00">
+        <DeMagnify T="10:14:22:800" eT="00:00:00" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="413" Y="494" Synth="false" Mag="false" T="10:14:22:811" eT="00:00:00" />
+        <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="413" Y="494" Synth="false" Mag="false" T="10:14:22:812" eT="00:00:00" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="413" Y="494" Synth="false" Mag="false" T="10:14:22:889" eT="00:00:00" />
+      </Clickthrough>
+    </Event>
+  </State>
+  <State Study="true" Logging="true" Baseline="false" Active="false" T="10:14:22:894" eT="00:00:00">
+    <Event>
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="398" Y="449" Synth="false" Mag="false" T="10:14:23:242" eT="00:00:00.9230000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="398" Y="449" Synth="false" Mag="false" T="10:14:23:306" eT="00:00:00.9230000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="123" Y="94" Synth="false" Mag="false" T="10:14:24:338" eT="00:00:01.9060000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="123" Y="94" Synth="false" Mag="false" T="10:14:24:474" eT="00:00:01.9060000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="242" Y="114" Synth="false" Mag="false" T="10:14:28:074" eT="00:00:04.8930000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="242" Y="114" Synth="false" Mag="false" T="10:14:28:178" eT="00:00:04.8930000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="346" Y="221" Synth="false" Mag="false" T="10:14:28:594" eT="00:00:05.8910000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="346" Y="221" Synth="false" Mag="false" T="10:14:28:658" eT="00:00:05.8910000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="433" Y="117" Synth="false" Mag="false" T="10:14:29:233" eT="00:00:06.8030000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="432" Y="117" Synth="false" Mag="false" T="10:14:29:378" eT="00:00:06.8030000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="789" Y="85" Synth="false" Mag="false" T="10:14:31:194" eT="00:00:07.7890000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="788" Y="85" Synth="false" Mag="false" T="10:14:31:372" eT="00:00:08.7870000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="417" Y="502" Synth="false" Mag="false" T="10:14:32:273" eT="00:00:09.6500000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="417" Y="502" Synth="false" Mag="false" T="10:14:32:393" eT="00:00:09.6500000" />
+    </Event>
+  </State>
+  <State Study="true" Logging="true" Baseline="false" Active="true" T="10:14:32:399" eT="00:00:09.6500000">
+    <Event>
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="397" Y="403" Synth="false" Mag="false" T="10:14:33:082" eT="00:00:09.6500000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="397" Y="403" Synth="false" Mag="false" T="10:14:33:186" eT="00:00:09.6500000" />
+      <Magnify X="97" Y="104" Diameter="600" TransposeX="0" TransposeY="0" T="10:14:33:226" eT="00:00:09.6500000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="397" Y="404" Synth="false" Mag="true" T="10:14:33:465" eT="00:00:10.6590000" />
+      <Clickthrough T="10:14:33:466" eT="00:00:10.6590000">
+        <DeMagnify T="10:14:33:469" eT="00:00:10.6590000" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="397" Y="404" Synth="false" Mag="false" T="10:14:33:472" eT="00:00:10.6590000" />
+        <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="397" Y="404" Synth="false" Mag="false" T="10:14:33:472" eT="00:00:10.6590000" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="397" Y="404" Synth="false" Mag="false" T="10:14:33:569" eT="00:00:10.6590000" />
+      </Clickthrough>
+    </Event>
+    <Event>
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="413" Y="190" Synth="false" Mag="false" T="10:14:36:273" eT="00:00:12.5470000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="413" Y="190" Synth="false" Mag="false" T="10:14:36:387" eT="00:00:13.5280000" />
+      <Magnify X="113" Y="0" Diameter="600" TransposeX="0" TransposeY="110" T="10:14:36:440" eT="00:00:13.5280000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="438" Y="179" Synth="false" Mag="true" T="10:14:36:906" eT="00:00:13.5280000" />
+      <Clickthrough T="10:14:36:906" eT="00:00:13.5280000">
+        <DeMagnify T="10:14:36:913" eT="00:00:13.5280000" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="419" Y="160" Synth="false" Mag="false" T="10:14:36:923" eT="00:00:13.5280000" />
+        <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="419" Y="160" Synth="false" Mag="false" T="10:14:36:924" eT="00:00:13.5280000" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="419" Y="160" Synth="false" Mag="false" T="10:14:37:042" eT="00:00:13.5280000" />
+      </Clickthrough>
+    </Event>
+    <Event>
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="210" Y="544" Synth="false" Mag="false" T="10:14:38:771" eT="00:00:15.5140000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="210" Y="544" Synth="false" Mag="false" T="10:14:38:874" eT="00:00:15.5140000" />
+      <Magnify X="0" Y="200" Diameter="600" TransposeX="90" TransposeY="-44" T="10:14:38:920" eT="00:00:15.5140000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="306" Y="533" Synth="false" Mag="true" T="10:14:39:194" eT="00:00:15.5140000" />
+      <Clickthrough T="10:14:39:195" eT="00:00:15.5140000">
+        <DeMagnify T="10:14:39:199" eT="00:00:15.5140000" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="1" X="211" Y="552" Synth="false" Mag="false" T="10:14:39:212" eT="00:00:15.5140000" />
+        <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="211" Y="552" Synth="false" Mag="false" T="10:14:39:222" eT="00:00:15.5140000" />
+        <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="211" Y="552" Synth="false" Mag="false" T="10:14:39:281" eT="00:00:15.5140000" />
+      </Clickthrough>
+    </Event>
+  </State>
+</PointingMagnifier>

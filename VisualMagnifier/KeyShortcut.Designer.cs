@@ -37,6 +37,7 @@ namespace PointingMagnifier
             // 
             // cb_Ctrl
             // 
+            this.cb_Ctrl.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
             this.cb_Ctrl.AutoSize = true;
             this.cb_Ctrl.Cursor = System.Windows.Forms.Cursors.Default;
             this.cb_Ctrl.Location = new System.Drawing.Point(4, 3);
@@ -49,6 +50,7 @@ namespace PointingMagnifier
             // 
             // cb_Alt
             // 
+            this.cb_Alt.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
             this.cb_Alt.AutoSize = true;
             this.cb_Alt.Cursor = System.Windows.Forms.Cursors.Default;
             this.cb_Alt.Location = new System.Drawing.Point(51, 3);
@@ -61,6 +63,7 @@ namespace PointingMagnifier
             // 
             // cb_Shift
             // 
+            this.cb_Shift.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
             this.cb_Shift.AutoSize = true;
             this.cb_Shift.Cursor = System.Windows.Forms.Cursors.Default;
             this.cb_Shift.Location = new System.Drawing.Point(95, 3);
@@ -73,6 +76,7 @@ namespace PointingMagnifier
             // 
             // cmb_Keys
             // 
+            this.cmb_Keys.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
             this.cmb_Keys.FormattingEnabled = true;
             this.cmb_Keys.Items.AddRange(new object[] {
             System.Windows.Forms.Keys.A,

@@ -51,6 +51,8 @@
             this.cbCrosshairs = new System.Windows.Forms.CheckBox();
             this.nudMagnification = new System.Windows.Forms.NumericUpDown();
             this.Shortcuts = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.keyShortcut3 = new PointingMagnifier.KeyShortcut();
             this.keyShortcut1 = new PointingMagnifier.KeyShortcut();
             this.keyShortcut2 = new PointingMagnifier.KeyShortcut();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,8 +74,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.keyShortcut3 = new PointingMagnifier.KeyShortcut();
-            this.label2 = new System.Windows.Forms.Label();
             this.cmsIcon.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
@@ -161,20 +161,22 @@
             // 
             // btnLogs
             // 
+            this.btnLogs.Enabled = false;
             this.btnLogs.Location = new System.Drawing.Point(251, 35);
             this.btnLogs.Name = "btnLogs";
             this.btnLogs.Size = new System.Drawing.Size(151, 23);
-            this.btnLogs.TabIndex = 17;
+            this.btnLogs.TabIndex = 14;
             this.btnLogs.Text = "Send Feedback";
             this.btnLogs.UseVisualStyleBackColor = true;
             this.btnLogs.Click += new System.EventHandler(this.Feedback_event);
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(251, 64);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 23);
-            this.button1.TabIndex = 18;
+            this.button1.TabIndex = 15;
             this.button1.Text = "Send Daily Survey";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.DailySurvey_event);
@@ -191,7 +193,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(233, 141);
-            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // label4
@@ -205,6 +207,7 @@
             // 
             // nudSize
             // 
+            this.nudSize.AccessibleName = "Cursor Size";
             this.nudSize.Location = new System.Drawing.Point(123, 42);
             this.nudSize.Maximum = new decimal(new int[] {
             500,
@@ -228,10 +231,11 @@
             // 
             // btnDefaults
             // 
+            this.btnDefaults.AccessibleName = "Defaults";
             this.btnDefaults.Location = new System.Drawing.Point(123, 112);
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(104, 23);
-            this.btnDefaults.TabIndex = 14;
+            this.btnDefaults.TabIndex = 6;
             this.btnDefaults.Text = "Restore Defaults";
             this.btnDefaults.UseVisualStyleBackColor = true;
             this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
@@ -247,6 +251,7 @@
             // 
             // cbGain
             // 
+            this.cbGain.AccessibleName = "Lower Mouse Gain";
             this.cbGain.AutoSize = true;
             this.cbGain.Location = new System.Drawing.Point(9, 68);
             this.cbGain.Name = "cbGain";
@@ -258,6 +263,7 @@
             // 
             // cbCrosshairs
             // 
+            this.cbCrosshairs.AccessibleName = "Crosshairs";
             this.cbCrosshairs.AutoSize = true;
             this.cbCrosshairs.Checked = true;
             this.cbCrosshairs.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -271,6 +277,7 @@
             // 
             // nudMagnification
             // 
+            this.nudMagnification.AccessibleName = "Magnification Factor";
             this.nudMagnification.Location = new System.Drawing.Point(123, 16);
             this.nudMagnification.Maximum = new decimal(new int[] {
             10,
@@ -305,15 +312,32 @@
             this.Shortcuts.Location = new System.Drawing.Point(12, 168);
             this.Shortcuts.Name = "Shortcuts";
             this.Shortcuts.Size = new System.Drawing.Size(233, 264);
-            this.Shortcuts.TabIndex = 22;
+            this.Shortcuts.TabIndex = 1;
             this.Shortcuts.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Hide the Magnifier while pressed";
+            // 
+            // keyShortcut3
+            // 
+            this.keyShortcut3.Location = new System.Drawing.Point(9, 50);
+            this.keyShortcut3.Name = "keyShortcut3";
+            this.keyShortcut3.Size = new System.Drawing.Size(148, 49);
+            this.keyShortcut3.TabIndex = 9;
+            this.keyShortcut3.ShortcutChanged += new System.EventHandler(this.keyShortcut3_ShortcutChanged);
             // 
             // keyShortcut1
             // 
             this.keyShortcut1.Location = new System.Drawing.Point(6, 129);
             this.keyShortcut1.Name = "keyShortcut1";
             this.keyShortcut1.Size = new System.Drawing.Size(148, 49);
-            this.keyShortcut1.TabIndex = 27;
+            this.keyShortcut1.TabIndex = 11;
             this.keyShortcut1.ShortcutChanged += new System.EventHandler(this.keyShortcut1_ShortcutChanged);
             // 
             // keyShortcut2
@@ -321,7 +345,7 @@
             this.keyShortcut2.Location = new System.Drawing.Point(6, 205);
             this.keyShortcut2.Name = "keyShortcut2";
             this.keyShortcut2.Size = new System.Drawing.Size(148, 49);
-            this.keyShortcut2.TabIndex = 26;
+            this.keyShortcut2.TabIndex = 13;
             this.keyShortcut2.ShortcutChanged += new System.EventHandler(this.keyShortcut2_ShortcutChanged);
             // 
             // label1
@@ -330,7 +354,7 @@
             this.label1.Location = new System.Drawing.Point(3, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 13);
-            this.label1.TabIndex = 17;
+            this.label1.TabIndex = 12;
             this.label1.Text = "Quit the Pointing Magnifier";
             // 
             // cbKeyboard
@@ -341,7 +365,7 @@
             this.cbKeyboard.Location = new System.Drawing.Point(6, 11);
             this.cbKeyboard.Name = "cbKeyboard";
             this.cbKeyboard.Size = new System.Drawing.Size(155, 17);
-            this.cbKeyboard.TabIndex = 6;
+            this.cbKeyboard.TabIndex = 7;
             this.cbKeyboard.Text = "Enable Keyboard Shortcuts";
             this.cbKeyboard.UseVisualStyleBackColor = true;
             this.cbKeyboard.CheckedChanged += new System.EventHandler(this.cbKeyboard_CheckedChanged);
@@ -352,7 +376,7 @@
             this.label8.Location = new System.Drawing.Point(3, 113);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(181, 13);
-            this.label8.TabIndex = 11;
+            this.label8.TabIndex = 10;
             this.label8.Text = "Toggle the Pointing Magnifier On/Off";
             // 
             // textBox3
@@ -372,7 +396,7 @@
             this.cbEnable.Location = new System.Drawing.Point(251, 396);
             this.cbEnable.Name = "cbEnable";
             this.cbEnable.Size = new System.Drawing.Size(151, 36);
-            this.cbEnable.TabIndex = 23;
+            this.cbEnable.TabIndex = 16;
             this.cbEnable.Text = "Turn On Pointing Magnifier";
             this.cbEnable.UseVisualStyleBackColor = true;
             this.cbEnable.Click += new System.EventHandler(this.ToggleMagnifier_event);
@@ -408,6 +432,7 @@
             // 
             // menuStart
             // 
+            this.menuStart.Enabled = false;
             this.menuStart.Name = "menuStart";
             this.menuStart.Size = new System.Drawing.Size(220, 22);
             this.menuStart.Text = "Begin Study";
@@ -485,23 +510,6 @@
             this.menuAbout.Size = new System.Drawing.Size(137, 22);
             this.menuAbout.Text = "About";
             this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
-            // 
-            // keyShortcut3
-            // 
-            this.keyShortcut3.Location = new System.Drawing.Point(9, 50);
-            this.keyShortcut3.Name = "keyShortcut3";
-            this.keyShortcut3.Size = new System.Drawing.Size(148, 49);
-            this.keyShortcut3.TabIndex = 28;
-            this.keyShortcut3.ShortcutChanged += new System.EventHandler(this.keyShortcut3_ShortcutChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Send Feedback";
             // 
             // MainForm
             // 

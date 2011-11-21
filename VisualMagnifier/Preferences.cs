@@ -14,15 +14,15 @@ namespace PointingMagnifier
             KeysConverter k = new KeysConverter();
             Properties.Settings s = Properties.Settings.Default;
             s.Reload();
-            if (s.UID == 0)
-            {
-                //s.UID = new Random().Next(10000);
-                //while (!uploader.InitializeUID(s.UID.ToString(), ""))
-                //    s.UID = new Random().Next(10000);
-                UID setID = new UID();
-                if (setID.ShowDialog()==DialogResult.OK)
-                    s.UID = setID.ID;
-            }
+            //if (s.UID == 0)
+            //{
+            //    //s.UID = new Random().Next(10000);
+            //    //while (!uploader.InitializeUID(s.UID.ToString(), ""))
+            //    //    s.UID = new Random().Next(10000);
+            //    UID setID = new UID();
+            //    if (setID.ShowDialog()==DialogResult.OK)
+            //        s.UID = setID.ID;
+            //}
             _sc1 = (Keys)k.ConvertFromString(s.Shortcut_1);
             _sc2 = (Keys)k.ConvertFromString(s.Shortcut_2);
             _sc3 = (Keys)k.ConvertFromString(s.Shortcut_3);

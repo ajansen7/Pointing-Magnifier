@@ -110,8 +110,6 @@ namespace PointingMagnifier
             _idleTimeout.AutoReset = false;
             _idleTimeout.Elapsed += new System.Timers.ElapsedEventHandler(_idleTimeout_Elapsed);
             _idleTimeout.Enabled = true;
-
-            
         }
         protected override void WndProc(ref Message m)
         {
@@ -323,6 +321,17 @@ namespace PointingMagnifier
         }
 
         /// <summary>
+        /// Gets the current diameter.
+        /// </summary>
+        public int DiameterNM
+        {
+            get
+            {
+                return RadiusNM * 2;
+            }
+        }
+
+        /// <summary>
         /// Gets or Sets the amount that the area cursor will magnify.
         /// </summary>
         public int MagnificationFactor
@@ -406,7 +415,6 @@ namespace PointingMagnifier
                 this.Visible = value;
                 _active = value;
                 _logger.ChangeState(_active);
-                _cursor.Visible = !_active; //When magnifier is active, cursor should not be visible
             }
         }
 
@@ -624,20 +632,21 @@ namespace PointingMagnifier
                     Win32.SystemParametersInfo((uint)Win32.SPI.SETMOUSESPEED, 0, mouseSpeed, (uint)Win32.SPIF.SENDCHANGE);
                 }
             }
+            
         }
 
         /// <summary>
         /// Updates the stored image with the current screen underneath the PM.
         /// </summary>
-        private void ScrapePixels()
+        public void ScrapePixels()
         {
             //Must hide the VMM to scape what is beneath it
             this.Visible = false;
 
             // capture the screen in a small sample area around the click point.
-            Bitmap bmpCk = new Bitmap(Diameter, Diameter);
+            Bitmap bmpCk = new Bitmap(DiameterNM, DiameterNM);
             Graphics gck = Graphics.FromImage(bmpCk);
-            gck.CopyFromScreen(Location, new Point(0, 0), new Size(Diameter, Diameter));
+            gck.CopyFromScreen(Location, new Point(0, 0), new Size(DiameterNM, DiameterNM));
             gck.Dispose();
 
             this.Visible = true;
@@ -684,24 +693,52 @@ namespace PointingMagnifier
                     {
                         //Release capture of mouse
                         _synthMouseUp = true;
-                        Win32.INPUT i = new Win32.INPUT();
-                        i.type = Win32.INPUTF.MOUSE;
-                        i.mi.dx = 0;
-                        i.mi.dy = 0;
-                        i.mi.mouseData = 0;
-                        i.mi.time = 0;
-                        i.mi.dwExtraInfo = UIntPtr.Zero;
+                        if (Win32.SizeOfIntPtr == 32)
+                        {
+                           // use x86 code: e.g., MYSTRUCTx86
+                            Win32.INPUTx86 i = new Win32.INPUTx86();
+                            i.type = Win32.INPUTF.MOUSE;
+                            i.mi.dx = 0;
+                            i.mi.dy = 0;
+                            i.mi.mouseData = 0;
+                            i.mi.time = 0;
+                            i.mi.dwExtraInfo = UIntPtr.Zero;
 
-                        i.mi.dwFlags = MouseButton(_pressedButton, true);
-                        Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUT()));
+                            i.mi.dwFlags = MouseButton(_pressedButton, true);
+                            Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx86()));
 
-                        _synthMouseUp = false;
-                        Cursor.Position = _mouseDownPt; //Move mouse back to original mouse down location
-                        Clickthrough = true; // set the form transparent so that the click we synthesize will go through
-                        _synthMouseDown = true;
+                            _synthMouseUp = false;
+                            Cursor.Position = _mouseDownPt; //Move mouse back to original mouse down location
+                            Clickthrough = true; // set the form transparent so that the click we synthesize will go through
+                            _synthMouseDown = true;
 
-                        i.mi.dwFlags = MouseButton(_pressedButton, false); // synthesize a mouse down in the mapped location, and since we want it to go through
-                        Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUT()));
+                            i.mi.dwFlags = MouseButton(_pressedButton, false); // synthesize a mouse down in the mapped location, and since we want it to go through
+                            Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx86()));
+                        }
+                        else if (Win32.SizeOfIntPtr == 64)
+                        {
+                           // use x64 code: e.g., MYSTRUCTx64
+                            Win32.INPUTx64 i = new Win32.INPUTx64();
+                            i.type = Win32.INPUTF.MOUSE;
+                            i.mi.dx = 0;
+                            i.mi.dy = 0;
+                            i.mi.mouseData = 0;
+                            i.mi.time = 0;
+                            i.mi.dwExtraInfo = UIntPtr.Zero;
+
+                            i.mi.dwFlags = MouseButton(_pressedButton, true);
+                            Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx64()));
+
+                            _synthMouseUp = false;
+                            Cursor.Position = _mouseDownPt; //Move mouse back to original mouse down location
+                            Clickthrough = true; // set the form transparent so that the click we synthesize will go through
+                            _synthMouseDown = true;
+
+                            i.mi.dwFlags = MouseButton(_pressedButton, false); // synthesize a mouse down in the mapped location, and since we want it to go through
+                            Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx64()));
+                        }
+                                                
+                        
                         _synthMouseDown = false;
 
                         Cursor.Position = e.Location;//Reset cursor position to the current location
@@ -761,28 +798,59 @@ namespace PointingMagnifier
                     // so we first block the input from coming through.
                     _synthMouseUp = true;
 
-                    Win32.INPUT i = new Win32.INPUT();
-                    i.type = Win32.INPUTF.MOUSE;
-                    i.mi.dx = 0;
-                    i.mi.dy = 0;
-                    i.mi.mouseData = 0;
-                    i.mi.time = 0;
-                    i.mi.dwExtraInfo = UIntPtr.Zero;
-                    i.mi.dwFlags = MouseButton(e.Button, true);
-                    Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUT()));
+                    if (Win32.SizeOfIntPtr == 32)
+                    {
+                       // use x86 code: e.g., MYSTRUCTx86
+                        Win32.INPUTx86 i = new Win32.INPUTx86();
+                        i.type = Win32.INPUTF.MOUSE;
+                        i.mi.dx = 0;
+                        i.mi.dy = 0;
+                        i.mi.mouseData = 0;
+                        i.mi.time = 0;
+                        i.mi.dwExtraInfo = UIntPtr.Zero;
+                        i.mi.dwFlags = MouseButton(e.Button, true);
+                        Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx86()));
 
-                    _synthMouseUp = false;
+                        _synthMouseUp = false;
 
-                    Cursor.Position = TransposeMouse(); // now move the mouse to the mapped click location.
+                        Cursor.Position = TransposeMouse(); // now move the mouse to the mapped click location.
 
-                    // synthesize a mouse down in the mapped location, and since we want it to go through, unblock input
-                    Clickthrough = true;
-                    DeMagnify();
+                        // synthesize a mouse down in the mapped location, and since we want it to go through, unblock input
+                        Clickthrough = true;
+                        DeMagnify();
 
-                    _synthMouseDown = true;
-                    i.mi.dwFlags = MouseButton(e.Button, false);
-                    Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUT()));
-                    _synthMouseDown = false;
+                        _synthMouseDown = true;
+                        i.mi.dwFlags = MouseButton(e.Button, false);
+                        Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx86()));
+                        _synthMouseDown = false;
+                    }
+                    else if (Win32.SizeOfIntPtr == 64)
+                    {
+                       // use x64 code: e.g., MYSTRUCTx64
+                        Win32.INPUTx64 i = new Win32.INPUTx64();
+                        i.type = Win32.INPUTF.MOUSE;
+                        i.mi.dx = 0;
+                        i.mi.dy = 0;
+                        i.mi.mouseData = 0;
+                        i.mi.time = 0;
+                        i.mi.dwExtraInfo = UIntPtr.Zero;
+                        i.mi.dwFlags = MouseButton(e.Button, true);
+                        Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx64()));
+
+                        _synthMouseUp = false;
+
+                        Cursor.Position = TransposeMouse(); // now move the mouse to the mapped click location.
+
+                        // synthesize a mouse down in the mapped location, and since we want it to go through, unblock input
+                        Clickthrough = true;
+                        DeMagnify();
+
+                        _synthMouseDown = true;
+                        i.mi.dwFlags = MouseButton(e.Button, false);
+                        Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx64()));
+                        _synthMouseDown = false;
+                    }
+                    
                 }
 
                 _pressedButton = e.Button;
@@ -792,39 +860,78 @@ namespace PointingMagnifier
             else //Mouse down was triggered by an x button and should be passed through to underlying application
             {
                 _synthMouseUp = true;
-
-                Win32.INPUT i = new Win32.INPUT();
-                i.type = Win32.INPUTF.MOUSE;
-                i.mi.dx = 0;
-                i.mi.dy = 0;
-                switch (e.Button) //Button 1 or Button 2
+                if (Win32.SizeOfIntPtr == 32)
                 {
-                    case System.Windows.Forms.MouseButtons.XButton1:
-                        i.mi.mouseData = (uint)Win32.MOUSEEVENTF.XBUTTON1;
-                        break;
-                    case System.Windows.Forms.MouseButtons.XButton2:
-                        i.mi.mouseData = (uint)Win32.MOUSEEVENTF.XBUTTON2;
-                        break;
-                    default:
-                        i.mi.mouseData = 0;
-                        break;
+                   // use x86 code: e.g., MYSTRUCTx86
+                    Win32.INPUTx86 i = new Win32.INPUTx86();
+                    i.type = Win32.INPUTF.MOUSE;
+                    i.mi.dx = 0;
+                    i.mi.dy = 0;
+                    switch (e.Button) //Button 1 or Button 2
+                    {
+                        case System.Windows.Forms.MouseButtons.XButton1:
+                            i.mi.mouseData = (uint)Win32.MOUSEEVENTF.XBUTTON1;
+                            break;
+                        case System.Windows.Forms.MouseButtons.XButton2:
+                            i.mi.mouseData = (uint)Win32.MOUSEEVENTF.XBUTTON2;
+                            break;
+                        default:
+                            i.mi.mouseData = 0;
+                            break;
+                    }
+
+                    i.mi.time = 0;
+                    i.mi.dwExtraInfo = UIntPtr.Zero;
+                    i.mi.dwFlags = Win32.MOUSEEVENTF.XUP;
+                    Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx86()));
+
+                    _synthMouseUp = false;
+
+                    // synthesize a mouse down in the mapped location, and since we want it to go through, unblock input
+                    Clickthrough = true;
+
+                    //this.Invalidate();
+                    _synthMouseDown = true;
+                    i.mi.dwFlags = Win32.MOUSEEVENTF.XDOWN;
+                    Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx86()));
+                    _synthMouseDown = false;
                 }
+                else if (Win32.SizeOfIntPtr == 64)
+                {
+                   // use x64 code: e.g., MYSTRUCTx64
+                    Win32.INPUTx64 i = new Win32.INPUTx64();
+                    i.type = Win32.INPUTF.MOUSE;
+                    i.mi.dx = 0;
+                    i.mi.dy = 0;
+                    switch (e.Button) //Button 1 or Button 2
+                    {
+                        case System.Windows.Forms.MouseButtons.XButton1:
+                            i.mi.mouseData = (uint)Win32.MOUSEEVENTF.XBUTTON1;
+                            break;
+                        case System.Windows.Forms.MouseButtons.XButton2:
+                            i.mi.mouseData = (uint)Win32.MOUSEEVENTF.XBUTTON2;
+                            break;
+                        default:
+                            i.mi.mouseData = 0;
+                            break;
+                    }
 
-                i.mi.time = 0;
-                i.mi.dwExtraInfo = UIntPtr.Zero;
-                i.mi.dwFlags = Win32.MOUSEEVENTF.XUP;
-                Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUT()));
+                    i.mi.time = 0;
+                    i.mi.dwExtraInfo = UIntPtr.Zero;
+                    i.mi.dwFlags = Win32.MOUSEEVENTF.XUP;
+                    Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx64()));
 
-                _synthMouseUp = false;
+                    _synthMouseUp = false;
 
-                // synthesize a mouse down in the mapped location, and since we want it to go through, unblock input
-                Clickthrough = true;
+                    // synthesize a mouse down in the mapped location, and since we want it to go through, unblock input
+                    Clickthrough = true;
 
-                //this.Invalidate();
-                _synthMouseDown = true;
-                i.mi.dwFlags = Win32.MOUSEEVENTF.XDOWN;
-                Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUT()));
-                _synthMouseDown = false;
+                    //this.Invalidate();
+                    _synthMouseDown = true;
+                    i.mi.dwFlags = Win32.MOUSEEVENTF.XDOWN;
+                    Win32.SendInput(1, ref i, System.Runtime.InteropServices.Marshal.SizeOf(new Win32.INPUTx64()));
+                    _synthMouseDown = false;
+                }
             }
         }
 

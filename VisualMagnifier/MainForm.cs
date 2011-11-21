@@ -41,7 +41,7 @@ namespace PointingMagnifier
             //Initialize settings
             preferences = new Preferences();
             _cursorWrapper = new CursorWrapper();
-            _logger = new Logger(ref preferences); //load preferences firs5t!
+            _logger = new Logger(ref preferences); //load preferences first!
 
             //Add Keyboard Hook
             kHook = new LowLevelKeyboardHook("kHook");
@@ -52,7 +52,8 @@ namespace PointingMagnifier
             _magnifier = new Magnifier(ref preferences,ref _logger, ref _cursorWrapper);
             _magnifier.Idle += new EventHandler(_magnifier_Idle);
 
-            menuStart.Enabled = !preferences.Study;
+            //Disable this option because we do not want the PM to log anything
+            //menuStart.Enabled = !preferences.Study;
 
             _start = DateTime.Now;
             _updateTime = new System.Windows.Forms.Timer();
@@ -128,7 +129,7 @@ namespace PointingMagnifier
         {
             kHook.Install();
             SetMaximum();
-            ToggleActive();
+            //ToggleActive();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -536,9 +537,14 @@ namespace PointingMagnifier
                 {
                     e.SuppressKeyPress = true;
                     if (preferences.Logging)
+                    {
                         Feedback_event(this, null);
+                    }
                     else
+                    {
+                        updateButtons();
                         _magnifier.ActiveNSC = false;
+                    }
                         
                 }
             }
@@ -546,11 +552,19 @@ namespace PointingMagnifier
 
         private void kHook_OnKeyUp(object sender, KeyEventArgs e)
         {
+            //need a way to make sure that this will only toggle if the magnifier should be active
             if (keyShortcut3.Shortcut == e.KeyData)
             {
                 e.SuppressKeyPress = true;
                 if (!preferences.Logging)
+                {
+                    //if (_magnifier.Magnified)
+                    //{
+                    //    _magnifier.ScrapePixels();
+                    //}
+                    updateButtons();
                     _magnifier.ActiveNSC = true;
+                }
             }
         }
         #endregion

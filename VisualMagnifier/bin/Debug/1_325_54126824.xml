@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<PointingMagnifier T="10:14:48:383" eT="00:00:17.5160000">
+  <State Active="Initialized" Study="true" Logging="true" Baseline="false" />
+  <State Study="true" Logging="true" Baseline="false" Active="true" T="10:14:48:437" eT="00:00:17.5160000">
+    <Preferences Crosshairs="False" eT="00:00:17.5160000" />
+    <Preferences Shorcut_Toggle="F11" eT="00:00:17.5160000" />
+    <Preferences Shorcut_Quit="F12" eT="00:00:17.5160000" />
+    <Preferences Shorcut_Feedback="H" eT="00:00:17.5160000" />
+    <Preferences Radius="75" eT="00:00:17.5160000" />
+    <Preferences MagnificationFactor="4" eT="00:00:17.5160000" />
+    <Preferences Transparency="0.5" eT="00:00:17.5160000" />
+    <Preferences LowerMouseGain="False" eT="00:00:17.5160000" />
+    <Preferences Crosshairs="False" eT="00:00:17.5160000" />
+    <Preferences Radius="75" eT="00:00:17.5160000" />
+  </State>
+  <State Study="true" Logging="true" Baseline="false" Active="false" T="10:14:48:653" eT="00:00:17.5160000">
+    <Event>
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="275" Y="195" Synth="false" Mag="false" T="10:14:50:813" eT="00:00:19.5260000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="275" Y="195" Synth="false" Mag="false" T="10:14:50:931" eT="00:00:19.5260000" />
+      <ME Btn="Left" Btn_St="D" Btn_cnt="0" X="356" Y="342" Synth="false" Mag="false" T="10:14:52:882" eT="00:00:21.5220000" />
+      <ME Btn="Left" Btn_St="U" Btn_cnt="0" X="356" Y="342" Synth="false" Mag="false" T="10:14:52:994" eT="00:00:21.5220000" />
+    </Event>
+  </State>
+</PointingMagnifier>
